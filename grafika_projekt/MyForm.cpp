@@ -1,4 +1,5 @@
 #include "MyForm.h"
+// elo elo trzy dwa zero
 
 using namespace System;
 using namespace System::Windows::Forms;
