@@ -1,4 +1,8 @@
 #pragma once
+#define cimg_use_tiff
+#include "CImg.h"
+using namespace cimg_library;
+#include <string>
 
 namespace grafika_projekt {
 
@@ -34,6 +38,13 @@ namespace grafika_projekt {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Button^  button1;
+	protected:
+		System::String^ name;
+		CImg<float>* originImage;
+		
+	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+	protected:
 
 	private:
 		/// <summary>
@@ -48,12 +59,54 @@ namespace grafika_projekt {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"MyForm";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->SuspendLayout();
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(98, 108);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 0;
+			this->button1->Text = L"Otwórz";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
+			// 
+			// MyForm
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->button1);
+			this->Name = L"MyForm";
+			this->Text = L"MyForm";
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		openFileDialog1->Filter = "Tiff Files|*.tif";
+		openFileDialog1->Title = "Select a Tiff File";
+
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			name = (gcnew System::String(openFileDialog1->FileName));
+			using namespace Runtime::InteropServices;
+			const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(name)).ToPointer();
+			originImage = new CImg<float>();
+			originImage->load_tiff(chars);
+			Marshal::FreeHGlobal(IntPtr((void*)chars));
+
+			//originImage->noise(1);
+			originImage->display("My image");
+			originImage->save_tiff("a.tif");
+
+		}
+	}
 	};
 }
