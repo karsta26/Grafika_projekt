@@ -3,6 +3,9 @@
 #include "CImg.h"
 using namespace cimg_library;
 #include <string>
+#include "Transform.h"
+
+typedef float myType;
 
 namespace grafika_projekt {
 
@@ -41,7 +44,7 @@ namespace grafika_projekt {
 	private: System::Windows::Forms::Button^  button1;
 	protected:
 		System::String^ name;
-		CImg<float>* originImage;
+		CImg<myType>* originImage;
 		
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
 	protected:
@@ -90,7 +93,7 @@ namespace grafika_projekt {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		openFileDialog1->Filter = "Tiff Files|*.tif";
+		openFileDialog1->Filter = "Tiff Files|*.tif|Tiff Files|*.tiff";
 		openFileDialog1->Title = "Select a Tiff File";
 
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
@@ -98,14 +101,14 @@ namespace grafika_projekt {
 			name = (gcnew System::String(openFileDialog1->FileName));
 			using namespace Runtime::InteropServices;
 			const char* chars = (const char*)(Marshal::StringToHGlobalAnsi(name)).ToPointer();
-			originImage = new CImg<float>();
+			originImage = new CImg<myType>();
 			originImage->load_tiff(chars);
-			Marshal::FreeHGlobal(IntPtr((void*)chars));
+			
 
-			//originImage->noise(1);
-			originImage->display("My image");
-			originImage->save_tiff("a.tif");
-
+			CImg<myType> out1 = Transform::LinearTo8Bit(*originImage);
+			CImg<myType> out2 = Transform::BitPerBit(*originImage,3,11);
+			CImg<myType> out3 = Transform::GammaCurve(*originImage, 1.7);
+			(out1, out2, out3).display();	
 		}
 	}
 	};

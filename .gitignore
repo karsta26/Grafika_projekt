@@ -240,3 +240,9 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/grafika_projekt/another.bmp
+/grafika_projekt/another_bit.bmp
+/grafika_projekt/gamma.bmp
+/grafika_projekt/Myimg.bmp
+/grafika_projekt/rys.tif
+/grafika_projekt/wyn.txt
