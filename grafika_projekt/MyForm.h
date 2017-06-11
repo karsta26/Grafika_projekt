@@ -75,6 +75,7 @@ namespace grafika_projekt {
 	private: System::Windows::Forms::Panel^  panel2;
 	private: System::Windows::Forms::Panel^  panel3;
 	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
+	private: System::Windows::Forms::Button^  button6;
 
 
 
@@ -109,6 +110,7 @@ namespace grafika_projekt {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -119,9 +121,10 @@ namespace grafika_projekt {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(36, 28);
+			this->button1->Location = System::Drawing::Point(48, 34);
+			this->button1->Margin = System::Windows::Forms::Padding(4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(100, 28);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Otwórz";
 			this->button1->UseVisualStyleBackColor = true;
@@ -133,9 +136,10 @@ namespace grafika_projekt {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(18, 57);
+			this->button2->Location = System::Drawing::Point(24, 70);
+			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(119, 23);
+			this->button2->Size = System::Drawing::Size(159, 28);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"kompresja liniowa";
 			this->button2->UseVisualStyleBackColor = true;
@@ -143,9 +147,10 @@ namespace grafika_projekt {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(18, 93);
+			this->button3->Location = System::Drawing::Point(24, 114);
+			this->button3->Margin = System::Windows::Forms::Padding(4);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(119, 23);
+			this->button3->Size = System::Drawing::Size(159, 28);
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"krzywa gamma";
 			this->button3->UseVisualStyleBackColor = true;
@@ -153,9 +158,10 @@ namespace grafika_projekt {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(18, 219);
+			this->button4->Location = System::Drawing::Point(24, 270);
+			this->button4->Margin = System::Windows::Forms::Padding(4);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(119, 22);
+			this->button4->Size = System::Drawing::Size(159, 27);
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"bez kompresji";
 			this->button4->UseVisualStyleBackColor = true;
@@ -164,11 +170,11 @@ namespace grafika_projekt {
 			// hScrollBar1
 			// 
 			this->hScrollBar1->LargeChange = 9;
-			this->hScrollBar1->Location = System::Drawing::Point(18, 304);
+			this->hScrollBar1->Location = System::Drawing::Point(24, 374);
 			this->hScrollBar1->Maximum = 17;
 			this->hScrollBar1->Minimum = 1;
 			this->hScrollBar1->Name = L"hScrollBar1";
-			this->hScrollBar1->Size = System::Drawing::Size(119, 17);
+			this->hScrollBar1->Size = System::Drawing::Size(159, 17);
 			this->hScrollBar1->TabIndex = 4;
 			this->hScrollBar1->Value = 1;
 			this->hScrollBar1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &MyForm::hScrollBar1_Scroll);
@@ -176,36 +182,39 @@ namespace grafika_projekt {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(33, 128);
+			this->label1->Location = System::Drawing::Point(44, 158);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(104, 13);
+			this->label1->Size = System::Drawing::Size(137, 17);
 			this->label1->TabIndex = 5;
 			this->label1->Text = L"wybierz wsp. gamma";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(19, 254);
+			this->label2->Location = System::Drawing::Point(25, 313);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(118, 13);
+			this->label2->Size = System::Drawing::Size(157, 17);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"wybierz 8-bitowy zakres";
 			// 
 			// hScrollBar2
 			// 
 			this->hScrollBar2->LargeChange = 1;
-			this->hScrollBar2->Location = System::Drawing::Point(15, 181);
+			this->hScrollBar2->Location = System::Drawing::Point(20, 223);
 			this->hScrollBar2->Maximum = 30;
 			this->hScrollBar2->Name = L"hScrollBar2";
-			this->hScrollBar2->Size = System::Drawing::Size(122, 17);
+			this->hScrollBar2->Size = System::Drawing::Size(163, 17);
 			this->hScrollBar2->TabIndex = 7;
 			this->hScrollBar2->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &MyForm::hScrollBar2_Scroll);
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(36, 347);
+			this->button5->Location = System::Drawing::Point(48, 427);
+			this->button5->Margin = System::Windows::Forms::Padding(4);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(78, 23);
+			this->button5->Size = System::Drawing::Size(104, 28);
 			this->button5->TabIndex = 8;
 			this->button5->Text = L"zapisz obraz";
 			this->button5->UseVisualStyleBackColor = true;
@@ -214,17 +223,19 @@ namespace grafika_projekt {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(76, 150);
+			this->label3->Location = System::Drawing::Point(101, 185);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(0, 13);
+			this->label3->Size = System::Drawing::Size(0, 17);
 			this->label3->TabIndex = 9;
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(76, 280);
+			this->label4->Location = System::Drawing::Point(101, 345);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(0, 13);
+			this->label4->Size = System::Drawing::Size(0, 17);
 			this->label4->TabIndex = 10;
 			// 
 			// pictureBox1
@@ -233,9 +244,10 @@ namespace grafika_projekt {
 			this->pictureBox1->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->pictureBox1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pictureBox1->Location = System::Drawing::Point(0, 0);
-			this->pictureBox1->MinimumSize = System::Drawing::Size(450, 400);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
+			this->pictureBox1->MinimumSize = System::Drawing::Size(600, 492);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(504, 411);
+			this->pictureBox1->Size = System::Drawing::Size(672, 506);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 11;
 			this->pictureBox1->TabStop = false;
@@ -245,14 +257,16 @@ namespace grafika_projekt {
 			this->panel1->AutoSize = true;
 			this->panel1->Controls->Add(this->pictureBox1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel1->Location = System::Drawing::Point(158, 0);
-			this->panel1->MinimumSize = System::Drawing::Size(300, 300);
+			this->panel1->Location = System::Drawing::Point(211, 0);
+			this->panel1->Margin = System::Windows::Forms::Padding(4);
+			this->panel1->MinimumSize = System::Drawing::Size(400, 369);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(504, 411);
+			this->panel1->Size = System::Drawing::Size(672, 506);
 			this->panel1->TabIndex = 12;
 			// 
 			// panel2
 			// 
+			this->panel2->Controls->Add(this->button6);
 			this->panel2->Controls->Add(this->button1);
 			this->panel2->Controls->Add(this->button2);
 			this->panel2->Controls->Add(this->label4);
@@ -266,9 +280,20 @@ namespace grafika_projekt {
 			this->panel2->Controls->Add(this->button4);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Left;
 			this->panel2->Location = System::Drawing::Point(0, 0);
+			this->panel2->Margin = System::Windows::Forms::Padding(4);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(158, 411);
+			this->panel2->Size = System::Drawing::Size(211, 506);
 			this->panel2->TabIndex = 13;
+			// 
+			// button6
+			// 
+			this->button6->Location = System::Drawing::Point(47, 468);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(105, 26);
+			this->button6->TabIndex = 11;
+			this->button6->Text = L"Histogram\r\n";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
 			// 
 			// panel3
 			// 
@@ -276,19 +301,21 @@ namespace grafika_projekt {
 			this->panel3->Controls->Add(this->panel2);
 			this->panel3->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel3->Location = System::Drawing::Point(0, 0);
+			this->panel3->Margin = System::Windows::Forms::Padding(4);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(662, 411);
+			this->panel3->Size = System::Drawing::Size(883, 506);
 			this->panel3->TabIndex = 14;
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
 			this->AutoSize = true;
-			this->ClientSize = System::Drawing::Size(662, 411);
+			this->ClientSize = System::Drawing::Size(883, 506);
 			this->Controls->Add(this->panel3);
-			this->MinimumSize = System::Drawing::Size(650, 450);
+			this->Margin = System::Windows::Forms::Padding(4);
+			this->MinimumSize = System::Drawing::Size(861, 543);
 			this->Name = L"MyForm";
 			this->Text = L"Obraz 16 bitowy";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -413,5 +440,19 @@ namespace grafika_projekt {
 
 		pictureBox1->Image = image1;
 	}
+private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	if (!originImage || !currentImage)
+	{
+		MessageBox::Show("Najpierw stwórz obrazek");
+		return;
+	}
+
+	CImg<myType> img = CImg<myType>(*originImage).histogram(256);
+	img.display_graph(0, 3);
+	CImg<myType> img2 = CImg<myType>(*currentImage).histogram(256);
+	img2.display_graph(0, 3);
+
+}
 };
 }
