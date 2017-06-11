@@ -76,6 +76,7 @@ namespace grafika_projekt {
 	private: System::Windows::Forms::Panel^  panel3;
 	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 	private: System::Windows::Forms::Button^  button6;
+	private: System::Windows::Forms::Button^  button7;
 
 
 
@@ -113,6 +114,7 @@ namespace grafika_projekt {
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->button7 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -211,7 +213,7 @@ namespace grafika_projekt {
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(48, 427);
+			this->button5->Location = System::Drawing::Point(48, 406);
 			this->button5->Margin = System::Windows::Forms::Padding(4);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(104, 28);
@@ -266,6 +268,7 @@ namespace grafika_projekt {
 			// 
 			// panel2
 			// 
+			this->panel2->Controls->Add(this->button7);
 			this->panel2->Controls->Add(this->button6);
 			this->panel2->Controls->Add(this->button1);
 			this->panel2->Controls->Add(this->button2);
@@ -287,11 +290,11 @@ namespace grafika_projekt {
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(47, 468);
+			this->button6->Location = System::Drawing::Point(24, 441);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(105, 26);
+			this->button6->Size = System::Drawing::Size(159, 28);
 			this->button6->TabIndex = 11;
-			this->button6->Text = L"Histogram\r\n";
+			this->button6->Text = L"Histogram 16 - bit";
 			this->button6->UseVisualStyleBackColor = true;
 			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
 			// 
@@ -305,6 +308,16 @@ namespace grafika_projekt {
 			this->panel3->Name = L"panel3";
 			this->panel3->Size = System::Drawing::Size(883, 506);
 			this->panel3->TabIndex = 14;
+			// 
+			// button7
+			// 
+			this->button7->Location = System::Drawing::Point(24, 473);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(159, 28);
+			this->button7->TabIndex = 12;
+			this->button7->Text = L"Histogram 8 - bit";
+			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &MyForm::button7_Click);
 			// 
 			// MyForm
 			// 
@@ -442,7 +455,7 @@ namespace grafika_projekt {
 	}
 private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	if (!originImage || !currentImage)
+	if (!originImage)
 	{
 		MessageBox::Show("Najpierw stwórz obrazek");
 		return;
@@ -450,6 +463,18 @@ private: System::Void button6_Click(System::Object^  sender, System::EventArgs^ 
 
 	CImg<myType> img = CImg<myType>(*originImage).histogram(256);
 	img.display_graph(0, 3);
+	
+
+}
+private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	if (!currentImage)
+	{
+		MessageBox::Show("Najpierw stwórz obrazek");
+		return;
+	}
+
+	
 	CImg<myType> img2 = CImg<myType>(*currentImage).histogram(256);
 	img2.display_graph(0, 3);
 
