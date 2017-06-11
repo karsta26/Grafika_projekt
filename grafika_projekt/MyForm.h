@@ -369,38 +369,36 @@ namespace grafika_projekt {
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		//
-		//tutaj wywolac funkcje wyswietlajaca obraz dla kompresji liniowej
+		// kompresja liniowa
 		//
 		if (!originImage)
 		{
 			MessageBox::Show("Najpierw stwórz obrazek");
 			return;
 		}
-		CImg<myType> img = Transform::LinearTo8Bit(*originImage);
 		if (currentImage)
 			delete currentImage;
-		currentImage = new CImg<myType>(img);
-		changeDisplayImage(img);
+		currentImage = new CImg<myType>(Transform::LinearTo8Bit(*originImage));
+		changeDisplayImage(*currentImage);
 	}
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 		//
-		//tutaj pokazujemy obraz na podstawie krzywej gamma
+		//krzywa gamma
 		//
 		if (!originImage)
 		{
 			MessageBox::Show("Najpierw stwórz obrazek");
 			return;
 		}
-		double gamma = this->hScrollBar2->Value;
-		CImg<myType> img = Transform::GammaCurve(*originImage, gamma);
+		double gamma = this->hScrollBar2->Value/10.;
 		if (currentImage)
 			delete currentImage;
-		currentImage = new CImg<myType>(img);
-		changeDisplayImage(img);
+		currentImage = new CImg<myType>(Transform::GammaCurve(*originImage, gamma));
+		changeDisplayImage(*currentImage);
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		//
-		//tutaj wycinamy 8-bitowy zakres
+		//8-bitowy zakres
 		//
 		if (!originImage)
 		{
@@ -408,11 +406,10 @@ namespace grafika_projekt {
 			return;
 		}
 		int from = this->hScrollBar1->Value;
-		CImg<myType> img = Transform::BitPerBit(*originImage, from, from+8);
 		if (currentImage)
 			delete currentImage;
-		currentImage = new CImg<myType>(img);
-		changeDisplayImage(img);
+		currentImage = new CImg<myType>(Transform::BitPerBit(*originImage, from, from + 8));
+		changeDisplayImage(*currentImage);
 	}
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 		//
@@ -460,11 +457,7 @@ private: System::Void button6_Click(System::Object^  sender, System::EventArgs^ 
 		MessageBox::Show("Najpierw stwórz obrazek");
 		return;
 	}
-
-	CImg<myType> img = CImg<myType>(*originImage).histogram(256);
-	img.display_graph(0, 3);
-	
-
+	CImg<myType>(*originImage).get_histogram(256).display_graph(0, 3);
 }
 private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
 
@@ -473,11 +466,7 @@ private: System::Void button7_Click(System::Object^  sender, System::EventArgs^ 
 		MessageBox::Show("Najpierw stwórz obrazek");
 		return;
 	}
-
-	
-	CImg<myType> img2 = CImg<myType>(*currentImage).histogram(256);
-	img2.display_graph(0, 3);
-
+	CImg<myType>(*currentImage).get_histogram(256).display_graph(0, 3);
 }
 };
 }
