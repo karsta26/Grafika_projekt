@@ -64,13 +64,13 @@ inline CImg<T> Transform::BitPerBit(const CImg<T>& img, const int from, const in
 		binaryG_16Bit <<= left; binaryG_16Bit >>= right;
 		binaryB_16Bit <<= left; binaryB_16Bit >>= right;
 
-		int decimalR_8Bit = bitset<16>(binaryR_16Bit).to_ulong();
-		int decimalG_8Bit = bitset<16>(binaryG_16Bit).to_ulong();
-		int decimalB_8Bit = bitset<16>(binaryB_16Bit).to_ulong();
+		int decimalR_8Bit = binaryR_16Bit.to_ulong();
+		int decimalG_8Bit = binaryG_16Bit.to_ulong();
+		int decimalB_8Bit = binaryB_16Bit.to_ulong();
 
-		output(x, y, 0) = static_cast<float>(decimalR_8Bit);
-		output(x, y, 1) = static_cast<float>(decimalG_8Bit);
-		output(x, y, 2) = static_cast<float>(decimalB_8Bit);
+		output(x, y, 0) = static_cast<T>(decimalR_8Bit);
+		output(x, y, 1) = static_cast<T>(decimalG_8Bit);
+		output(x, y, 2) = static_cast<T>(decimalB_8Bit);
 	}
 	return output;
 }
